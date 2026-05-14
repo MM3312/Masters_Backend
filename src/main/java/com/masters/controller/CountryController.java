@@ -1,5 +1,7 @@
 package com.masters.controller;
 
+import com.masters.dtos.CountrySaveDTO;
+import com.masters.dtos.CountryUpdateDTO;
 import com.masters.entity.Country;
 import com.masters.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,8 +28,13 @@ public class CountryController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity<?> saveCountry(@RequestBody Country country) {
+    public ResponseEntity<?> saveCountry(@RequestBody CountrySaveDTO countrySaveDTO) {
         try {
+            Country country = new Country();
+            country.setCountryName(countrySaveDTO.getCountryName());
+            country.setCountryContNo(countrySaveDTO.getCountryContNo());
+            country.setCreatedBy(countrySaveDTO.getCreatedBy());
+            
             Country savedCountry = countryService.saveCountry(country);
             return ResponseEntity.ok(savedCountry);
         } catch (Exception e) {
@@ -36,8 +43,13 @@ public class CountryController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> updateCountry(@PathVariable Integer id, @RequestBody Country country) {
+    public ResponseEntity<?> updateCountry(@PathVariable Integer id, @RequestBody CountryUpdateDTO countryUpdateDTO) {
         try {
+            Country country = new Country();
+            country.setCountryName(countryUpdateDTO.getCountryName());
+            country.setCountryContNo(countryUpdateDTO.getCountryContNo());
+            country.setUpdatedBy(countryUpdateDTO.getUpdatedBy());
+            
             Country updatedCountry = countryService.updateCountry(id, country);
             return ResponseEntity.ok(updatedCountry);
         } catch (Exception e) {

@@ -13,38 +13,41 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class District {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "district_id")
-    private Integer districtId;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "district_id")
+  private Integer districtId;
 
-    @Column(name = "district_name", nullable = false, length = 50)
-    private String districtName;
+  @Column(name = "district_name", nullable = false, length = 50)
+  private String districtName;
 
-    @Column(name = "status", nullable = false)
-    private Integer status = 1;
+  @Column(name = "status", nullable = false)
+  private Integer status = 1;
 
-    @Column(name = "created_on", updatable = false)
-    private LocalDateTime createdOn;
+  @Column(name = "state_id", nullable = true)
+  private Integer stateId;
 
-    @Column(name = "created_by")
-    private Integer createdBy;
+  @Column(name = "created_on", updatable = false)
+  private LocalDateTime createdOn;
 
-    @Column(name = "updated_on")
-    private LocalDateTime updatedOn;
+  @Column(name = "created_by")
+  private Integer createdBy;
 
-    @Column(name = "updated_by")
-    private Integer updatedBy;
+  @Column(name = "updated_on")
+  private LocalDateTime updatedOn;
 
-//     @PrePersist
-//     protected void onCreate() {
-//         if (this.createdOn == null) {
-//             this.createdOn = LocalDateTime.now();
-//         }
-//     }
+  @Column(name = "updated_by")
+  private Integer updatedBy;
 
-//     @PreUpdate
-//     protected void onUpdate() {
-//         this.updatedOn = LocalDateTime.now();
-//     }
+  // @PrePersist
+  // protected void onCreate() {
+  // if (this.createdOn == null) {
+  // this.createdOn = LocalDateTime.now();
+  // }
+  // }
+
+  @PreUpdate
+  protected void onUpdate() {
+    this.updatedOn = LocalDateTime.now();
   }
+}

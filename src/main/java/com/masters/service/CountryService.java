@@ -24,6 +24,7 @@ public class CountryService {
 
     /**
      * Saves a new country or updates an existing one.
+     * 
      * @param country The country to save
      * @return The saved country
      */
@@ -33,7 +34,8 @@ public class CountryService {
 
     /**
      * Updates an existing country record.
-     * @param id The ID of the country to update
+     * 
+     * @param id             The ID of the country to update
      * @param countryDetails The updated details
      * @return The updated country
      */
@@ -50,15 +52,18 @@ public class CountryService {
 
     /**
      * Soft deletes a country by setting status to 0.
+     * 
      * @param id The ID of the country to delete
      */
     /**
      * Soft deletes a country by setting status to 0.
+     * 
      * @param id The ID of the country to delete
      */
     /**
      * Soft deletes a country by setting status to 0.
-     * @param id The ID of the country to delete
+     * 
+     * @param id        The ID of the country to delete
      * @param updatedBy The ID of the user performing the deletion
      */
     public void deleteCountry(Integer id, Integer updatedBy) {
