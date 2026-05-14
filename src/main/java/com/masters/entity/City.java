@@ -32,12 +32,14 @@ public class City {
     private District district;
 
     @Column(name = "created_on", updatable = false)
+    @org.hibernate.annotations.CreationTimestamp
     private LocalDateTime createdOn;
 
     @Column(name = "created_by")
     private Integer createdBy;
 
     @Column(name = "updated_on")
+    @org.hibernate.annotations.UpdateTimestamp
     private LocalDateTime updatedOn;
 
     @Column(name = "updated_by")
