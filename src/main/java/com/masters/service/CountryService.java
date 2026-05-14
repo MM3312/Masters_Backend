@@ -30,4 +30,38 @@ public class CountryService {
     public Country saveCountry(Country country) {
         return countryRepository.save(country);
     }
+
+    /**
+     * Updates an existing country record.
+     * @param id The ID of the country to update
+     * @param countryDetails The updated details
+     * @return The updated country
+     */
+    public Country updateCountry(Integer id, Country countryDetails) {
+        Country country = countryRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Country not found with id: " + id));
+
+        country.setCountryName(countryDetails.getCountryName());
+        country.setUpdatedBy(countryDetails.getUpdatedBy());
+        country.setCountryContNo(countryDetails.getCountryContNo());
+
+        return countryRepository.save(country);
+    }
+
+    /**
+     * Soft deletes a country by setting status to 0.
+     * @param id The ID of the country to delete
+     */
+    /**
+     * Soft deletes a country by setting status to 0.
+     * @param id The ID of the country to delete
+     */
+    /**
+     * Soft deletes a country by setting status to 0.
+     * @param id The ID of the country to delete
+     * @param updatedBy The ID of the user performing the deletion
+     */
+    public void deleteCountry(Integer id, Integer updatedBy) {
+        countryRepository.softDeleteCountry(id, updatedBy);
+    }
 }
