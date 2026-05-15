@@ -36,11 +36,13 @@ public class CityService {
         return cityRepository.findByStatus(1).stream()
                 .map(city -> {
                     CityGetDTO dto = new CityGetDTO();
+                    dto.setCityId(city.getCityId());
                     dto.setCityCode(city.getCityCode());
                     dto.setCityName(city.getCityName());
                     dto.setPayrollCityCode(city.getPayrollCityCode());
                     if (city.getDistrict() != null) {
                         dto.setDistrictId(city.getDistrict().getDistrictId());
+                        dto.setDistrictName(city.getDistrict().getDistrictName());
                     }
                     return dto;
                 })
@@ -156,7 +158,7 @@ public class CityService {
      * Deletes a city record based on ID.
      * This is implemented as a soft delete by setting status to 0.
      * 
-     * @param id The ID of the city to delete
+     * @param id        The ID of the city to delete
      * @param updatedBy The ID of the user performing the deletion
      */
     public void deleteCity(Integer id, Integer updatedBy) {

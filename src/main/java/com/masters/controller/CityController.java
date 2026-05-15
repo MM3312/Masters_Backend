@@ -16,6 +16,7 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/api/cities")
+@CrossOrigin("*")
 public class CityController {
 
     @Autowired
@@ -59,7 +60,7 @@ public class CityController {
     /**
      * Deletes a city record based on ID (Soft Delete).
      * 
-     * @param id The ID of the city to delete
+     * @param id        The ID of the city to delete
      * @param updatedBy The ID of the user performing the deletion
      * @return ResponseEntity with success message
      */
